@@ -1,4 +1,4 @@
-/* General Reset */
+/* Reset */
 * {
   margin: 0;
   padding: 0;
@@ -13,6 +13,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
 }
 
 header {
@@ -30,33 +31,21 @@ header p {
   color: #555;
 }
 
-/* Flashcard grid */
-#flashcard-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  width: 90%;
-  max-width: 1200px;
-  margin: 2rem auto;
-}
-
-/* Flashcard styles */
+/* Flashcard */
 .flashcard {
   perspective: 1000px;
+  margin: 2rem auto;
+  width: 320px;
+  height: 220px;
 }
 
 .card-inner {
   position: relative;
   width: 100%;
-  height: 200px;
-  text-align: center;
+  height: 100%;
   transition: transform 0.8s;
   transform-style: preserve-3d;
   cursor: pointer;
-}
-
-.flashcard:hover .card-inner {
-  transform: rotateY(180deg);
 }
 
 .card-front, .card-back {
@@ -70,23 +59,54 @@ header p {
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
 }
 
 .card-front {
   background: #fff;
   font-weight: bold;
   color: #3b49df;
+  font-size: 1.2rem;
 }
 
 .card-back {
   background: #3b49df;
   color: white;
   transform: rotateY(180deg);
+  font-size: 1.1rem;
+}
+
+/* Controls */
+.controls {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+button {
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px;
+  background: #3b49df;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background: #2d37a4;
+}
+
+#counter {
+  margin: 1rem 0;
+  font-size: 0.95rem;
+  color: #444;
 }
 
 /* Footer */
 footer {
-  margin: 2rem 0;
+  margin: 1rem 0;
   font-size: 0.9rem;
   color: #666;
 }
