@@ -12,8 +12,21 @@
     <p>Chapter 13 – Electric Current and Circuits</p>
   </header>
 
-  <main id="flashcard-container">
-    <!-- Flashcards will be inserted by JS -->
+  <main>
+    <div id="flashcard" class="flashcard">
+      <div class="card-inner" id="card-inner">
+        <div class="card-front" id="card-front"></div>
+        <div class="card-back" id="card-back"></div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <button id="prevBtn">⟵ Previous</button>
+      <button id="flipBtn">Flip</button>
+      <button id="nextBtn">Next ⟶</button>
+    </div>
+
+    <p id="counter"></p>
   </main>
 
   <footer>
