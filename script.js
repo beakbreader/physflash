@@ -12,18 +12,39 @@ const flashcards = [
   { q: "Current in a parallel circuit?", a: "Splits between branches depending on resistance." }
 ];
 
-const container = document.getElementById("flashcard-container");
+let currentIndex = 0;
+let flipped = false;
 
-flashcards.forEach(fc => {
-  const card = document.createElement("div");
-  card.className = "flashcard";
+const cardInner = document.getElementById("card-inner");
+const front = document.getElementById("card-front");
+const back = document.getElementById("card-back");
+const counter = document.getElementById("counter");
 
-  card.innerHTML = `
-    <div class="card-inner">
-      <div class="card-front">${fc.q}</div>
-      <div class="card-back">${fc.a}</div>
-    </div>
-  `;
-  
-  container.appendChild(card);
+function loadCard(index) {
+  flipped = false;
+  cardInner.style.transform = "rotateY(0deg)";
+  front.textContent = flashcards[index].q;
+  back.textContent = flashcards[index].a;
+  counter.textContent = `Card ${index + 1} of ${flashcards.length}`;
+}
+
+document.getElementById("flipBtn").addEventListener("click", () => {
+  flipped = !flipped;
+  cardInner.style.transform = flipped ? "rotateY(180deg)" : "rotateY(0deg)";
 });
+
+document.getElementById("nextBtn").addEventListener("click", () => {
+  if (currentIndex < flashcards.length - 1) {
+    currentIndex++;
+    loadCard(currentIndex);
+  }
+});
+
+document.getElementById("prevBtn").addEventListener("click", () => {
+  if (currentIndex > 0) {
+    currentIndex--;
+    loadCard(currentIndex);
+  }
+});
+
+loadCard(currentIndex);
